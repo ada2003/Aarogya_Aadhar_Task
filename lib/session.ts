@@ -16,6 +16,7 @@ const sessionOptions = {
   },
 };
 
+
 export async function getSession(): Promise<IronSession<SessionData>> {
   const cookieStore = await cookies();
   return getIronSession<SessionData>(cookieStore, sessionOptions);
