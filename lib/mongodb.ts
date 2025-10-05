@@ -12,10 +12,11 @@ interface CachedConnection {
 }
 
 declare global {
+  // Avoid redeclaration errors in Next.js hot reload
   var mongoose: CachedConnection | undefined;
 }
 
-let cached: CachedConnection = global.mongoose || { conn: null, promise: null };
+const cached: CachedConnection = global.mongoose || { conn: null, promise: null };
 
 if (!global.mongoose) {
   global.mongoose = cached;
